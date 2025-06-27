@@ -1,0 +1,65 @@
+# FLUX Resource List
+
+## 📦 Checkpoints
+
+---
+
+### 🔹 Base
+
+| Model name                   | Name                                | Description                                                | Size    | Download                                                                                                 |
+|------------------------------|-------------------------------------|------------------------------------------------------------|---------|----------------------------------------------------------------------------------------------------------|
+| Flux.1 Dev - fp16            | flux1-dev.safetensors               | Full-precision (fp16) version of the Flux.1 Dev model      | 23.8 GB | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/checkpoint/flux/flux1-dev.safetensors)     |
+| Flux.1 Dev - fp8             | flux1-dev-fp8.safetensors           | Lower-precision (fp8) version of Flux.1 Dev for efficiency | 11.9 GB | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/checkpoint/flux/flux1-dev-fp8.safetensors) |
+| Flux.1 Dev 8-bit (Q8_0) GGUF | flux1-dev-Q8_0.gguf                 | Quantized GGUF version (8-bit Q8_0) of Flux.1 Dev          | 12.7 GB | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/checkpoint/flux/flux1-dev-Q8_0.gguf)       |
+| CLIP-L                       | clip_l.safetensors                  | CLIP-L text encoder for conditioning                       | 246 MB  | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/clip/clip_l.safetensors)                   |
+| T5-XXL - fp16                | t5xxl_fp16.safetensors              | Full-precision (fp16) T5-XXL text model used by Flux.1     | 9.79 GB | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/clip/t5xxl_fp16.safetensors)               |
+| T5-XXL - fp8                 | t5xxl_fp8_e4m3fn_scaled.safetensors | Compressed (fp8) T5-XXL version for lower resource usage   | 5.16 GB | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/clip/t5xxl_fp8_e4m3fn_scaled.safetensors)  |
+| VAE                          | ae.safetensors                      | Variational autoencoder used by Flux.1 pipeline            | 335 MB  | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/vae/flux/ae.safetensors)                   |
+
+## 🧩 LoRAs
+
+---
+
+### 🔹 SFW
+
+| LoRA name              | File name                                 | Size    | Triggers                                                                                             | Recommendations                             | Download                                                                                                               | Source                                                                        |
+|------------------------|-------------------------------------------|---------|------------------------------------------------------------------------------------------------------|---------------------------------------------|------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| Turbo 8 steps LoRA     | flux-turbo-alpha-lora.safetensors         | 694 MB  | -                                                                                                    | Speed Loara                                 | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/lora/flux/flux-turbo-alpha-lora.safetensors)             | [HuggingFace](https://huggingface.co/alimama-creative/FLUX.1-Turbo-Alpha)     |
+| Flux Depth LoRA        | flux1-depth-dev-lora.safetensors          | 1.24 GB | -                                                                                                    | Adds depth and spatial detail               | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/lora/flux/flux1-depth-dev-lora.safetensors)              | [HuggingFace](https://huggingface.co/black-forest-labs/FLUX.1-Depth-dev-lora) |
+| Xlabs AI Photo-Realism | flux_realism_lora.safetensors             | 22.4 MB | -                                                                                                    | Enhances photorealism                       | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/lora/flux/flux_realism_lora_comfy_converted.safetensors) | [HuggingFace](https://huggingface.co/XLabs-AI/flux-RealismLora)               |
+| Photorealistic Skin    | flux-realistic-skin-lora-v0.1.safetensors | 76.7 MB | `aidmarealisticskin`                                                                                 | Improves skin texture realism (Strength 0.6 | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/lora/flux/flux-realistic-skin-lora-v0.1.safetensors)     | [CivitAI](https://civitai.com/models/1157318?modelVersionId=1301668)          |
+| Hourglass Body         | hourglass-body-flux.safetensors           | 76.7 MB | `extremely tiny waist`, `thick legs`, `extremely wide hips`, `extremely slim hourglass body`, `h0u4` | Experimental                                | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/lora/flux/hourglass-body-flux.safetensors)               | [CivitAI](https://civitai.com/models/1221542?modelVersionId=1376192)          |
+
+### 🔹 DreamO: A Unified Framework for Image Customization
+
+| File name                                   | Size   | Details       | Download                                                                                                          | Source                                                                                                             |
+|---------------------------------------------|--------|---------------|-------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
+| dreamo_comfyui.safetensors                  | 598 MB | Main Loara    | [Download](https://huggingface.co/SimonJoz/comfy-dreamo/resolve/main/dreamo_comfyui.safetensors)                  | [GitHub](https://github.com/ToTheBeginning/ComfyUI-DreamO), [HuggingFace](https://huggingface.co/ByteDance/DreamO) |
+| dreamo_cfg_distill_comfyui.safetensors      | 598 MB | CFG Lora      | [Download](https://huggingface.co/SimonJoz/comfy-dreamo/resolve/main/dreamo_cfg_distill_comfyui.safetensors)      | [GitHub](https://github.com/ToTheBeginning/ComfyUI-DreamO), [HuggingFace](https://huggingface.co/ByteDance/DreamO) |
+| dreamo_quality_lora_pos_comfyui.safetensors | 598 MB | Positive Lora | [Download](https://huggingface.co/SimonJoz/comfy-dreamo/resolve/main/dreamo_quality_lora_pos_comfyui.safetensors) | [GitHub](https://github.com/ToTheBeginning/ComfyUI-DreamO), [HuggingFace](https://huggingface.co/ByteDance/DreamO) |
+| dreamo_quality_lora_neg_comfyui.safetensors | 598 MB | Negative Lora | [Download](https://huggingface.co/SimonJoz/comfy-dreamo/resolve/main/dreamo_quality_lora_neg_comfyui.safetensors) | [GitHub](https://github.com/ToTheBeginning/ComfyUI-DreamO), [HuggingFace](https://huggingface.co/ByteDance/DreamO) |
+
+## 🧠 ControlNets
+
+| ControlNet                | File name                                      | Size    | Description                                                                                                                      | Download                                                                                                                       | Source                                                                                                                        |
+|---------------------------|------------------------------------------------|---------|----------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| XLabs AI Flux HED v3      | flux-hed-controlnet-v3.safetensors             | 1.49 GB | Edge detection model (HED – Holistically-Nested Edge Detection) for soft, detailed contours; better than Canny for organic forms | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/control-net/flux/flux-hed-controlnet-v3.safetensors)             | [HuggingFace](https://huggingface.co/XLabs-AI/flux-controlnet-hed-v3), [GitHub](https://github.com/XLabs-AI/x-flux-comfyui)   |
+| XLabs AI Flux Depth v3    | flux-depth-controlnet-v3.safetensors           | 1.49 GB | Depth-aware guidance model for realistic spatial structure control in image generation                                           | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/control-net/flux/flux-depth-controlnet-v3.safetensors)           | [HuggingFace](https://huggingface.co/XLabs-AI/flux-controlnet-depth-v3), [GitHub](https://github.com/XLabs-AI/x-flux-comfyui) |
+| InstantX Union            | flux-union-instantx-controlnet.safetensors     | 6.6 GB  | Comprehensive multi-mode ControlNet supporting various conditioning types including pose, depth, edges, and more                 | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/control-net/flux/flux-union-instantx-controlnet.safetensors)     | [HuggingFace](https://huggingface.co/InstantX/FLUX.1-dev-Controlnet-Union)                                                    |
+| ShakkerLabs Union Pro 2.0 | flux-dev-shakker-labs-controlnet-union-pro-2.0 | 4.28 GB | Optimized all-in-one ControlNet with enhanced accuracy and performance across multiple input types                               | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/control-net/flux/flux-dev-shakker-labs-controlnet-union-pro-2.0) | [HuggingFace](https://huggingface.co/Shakker-Labs/FLUX.1-dev-ControlNet-Union-Pro)                                            |
+
+## 👤 IP Adapters & PulID
+
+| Model name               | File name                          | Size    | Description            | Download                                                                                                      | Source                                                                                                                             |
+|--------------------------|------------------------------------|---------|------------------------|---------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| Flux XLabs IP Adapter v2 | ip_adapter_v2.safetensors          | 1.06 GB | Face identity guidance | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/ip-adapter/flux/ip_adapter_v2.safetensors)      | [GitHub](https://github.com/XLabs-AI/x-flux?tab=readme-ov-file), [HuggingFace](https://huggingface.co/XLabs-AI/flux-ip-adapter-v2) |
+| CLIP VIT-L               | clip-vit-large-patch14.safetensors | 1.71 GB | Vision-language model  | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/clip-vision/clip-vit-large-patch14.safetensors) | [HuggingFace](https://huggingface.co/openai/clip-vit-large-patch14)                                                                |
+| Flux PulID v0.9.1        | pulid_flux_v0.9.1.safetensors      | 1.14 GB | Face matching backend  | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/pulid/pulid_flux_v0.9.1.safetensors)            | [GitHub](https://github.com/ToTheBeginning/PuLID)                                                                                  |
+
+
+## Total: 83.75 GB
+
+
+```shell
+echo "scale=2; 23.8 + 11.9 + 12.7 + 246/1024 + 9.79 + 5.16 + 335/1024 + 694/1024 + 1.24 + 22.4/1024 + 76.7/1024 + 76.7/1024 + 1.49 + 1.49 + 6.6 + 4.28 + 1.06 + 1.71 + 1.14" | bc | xargs -I{} echo "Total: {} GB"
+```

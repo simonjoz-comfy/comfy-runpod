@@ -1,0 +1,11 @@
+{
+  "Comfy.TutorialCompleted": true,
+  "Crystools.ShowHdd": false,
+  "Crystools.MonitorHeight": 30,
+  "Crystools.RefreshRate": 0.75,
+  "Crystools.MonitorWidth": 80,
+  "Comfy.NodeBadge.NodeIdBadgeMode": "Show all",
+  "Comfy.LinkRenderMode": 0,
+  "KJNodes.browserStatus": false,
+  "KJNodes.helpPopup": true
+}

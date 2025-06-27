@@ -1,0 +1,32 @@
+comfyui:
+  base_path: /workspace/
+  is_default: false
+  checkpoints: models/checkpoints/
+  clip: models/clip/
+  clip_vision: models/clip_vision/
+  configs: models/configs/
+  controlnet: models/controlnet/
+  unet: models/unet/
+  diffusers: models/diffusers/
+  diffusion_models: |
+    models/unet/
+    models/diffusion_models/
+  embeddings: models/embeddings/
+  gligen: models/gligen/
+  hypernetworks: models/hypernetworks/
+  insightface: models/insightface/
+  LLM: models/LLM/
+  loras: models/loras/
+  onnx: models/onnx/
+  photomaker: models/photomaker/
+  pulid: models/pulid/
+  sams: models/sams/
+  style_models: models/style_models/
+  text_encoders: models/text_encoders/
+  upscale_models: models/upscale_models/
+  vae: models/vae/
+  vae_approx: models/vae_approx/
+  ipadapter: models/ipadapter/
+  instantid: models/instantid/
+  ultralytics_bbox: models/ultralytics/bbox/
+  ultralytics_segm: models/ultralytics/segm/

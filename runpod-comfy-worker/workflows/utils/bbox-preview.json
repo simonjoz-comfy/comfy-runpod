@@ -1,0 +1,223 @@
+{
+  "id": "8182ff88-1fb6-46c4-8a8c-ce78686ba6f6",
+  "revision": 0,
+  "last_node_id": 25,
+  "last_link_id": 25,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "UltralyticsDetectorProvider",
+      "pos": [
+        -33.88874053955078,
+        -2073.784423828125
+      ],
+      "size": [
+        237.53099060058594,
+        93.47919464111328
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "BBOX_DETECTOR",
+          "type": "BBOX_DETECTOR",
+          "links": [
+            7
+          ]
+        },
+        {
+          "name": "SEGM_DETECTOR",
+          "type": "SEGM_DETECTOR",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-subpack",
+        "ver": "1.3.2",
+        "Node name for S&R": "UltralyticsDetectorProvider"
+      },
+      "widgets_values": [
+        "bbox/face_yolov8m.pt"
+      ]
+    },
+    {
+      "id": 14,
+      "type": "SEGSPreview",
+      "pos": [
+        -62.86500930786133,
+        -1662.9210205078125
+      ],
+      "size": [
+        270,
+        314
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "segs",
+          "type": "SEGS",
+          "link": 10
+        },
+        {
+          "name": "fallback_image_opt",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "ver": "8.15.3",
+        "Node name for S&R": "SEGSPreview"
+      },
+      "widgets_values": [
+        true,
+        0.2
+      ]
+    },
+    {
+      "id": 12,
+      "type": "BboxDetectorSEGS",
+      "pos": [
+        -4.7492194175720215,
+        -1932.06640625
+      ],
+      "size": [
+        210,
+        224
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "bbox_detector",
+          "type": "BBOX_DETECTOR",
+          "link": 7
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 19
+        },
+        {
+          "name": "detailer_hook",
+          "shape": 7,
+          "type": "DETAILER_HOOK",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SEGS",
+          "type": "SEGS",
+          "links": [
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "ver": "8.15.3",
+        "Node name for S&R": "BboxDetectorSEGS"
+      },
+      "widgets_values": [
+        0.5000000000000001,
+        5,
+        4,
+        10,
+        "all"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "LoadImage",
+      "pos": [
+        -375.2271423339844,
+        -2002.26416015625
+      ],
+      "size": [
+        296.3537902832031,
+        401.5343322753906
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            19
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "c0ea0d544d5e936fe5cd60fc4e4b35097ae12de6abfd7c7f3713216e2b005a37.png.webp",
+        "image"
+      ]
+    }
+  ],
+  "links": [
+    [
+      7,
+      1,
+      0,
+      12,
+      0,
+      "BBOX_DETECTOR"
+    ],
+    [
+      10,
+      12,
+      0,
+      14,
+      0,
+      "SEGS"
+    ],
+    [
+      19,
+      8,
+      0,
+      12,
+      1,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.0152559799477068,
+      "offset": [
+        851.2360551316701,
+        2197.500775969104
+      ]
+    },
+    "frontendVersion": "1.22.2"
+  },
+  "version": 0.4
+}
