@@ -156,8 +156,9 @@ start_filebrowser() {
         log_warn "Starting Filebrowser with no authentication."
     else
         no_auth_flag=""
-        # Check if user already exists
-        if filebrowser -d "$NETWORK_VOLUME/filebrowser.db" users list | grep -q "$FB_USERNAME"; then
+        user_exists=$(filebrowser -d "$NETWORK_VOLUME/filebrowser.db" users list 2>/dev/null | grep -w "$FB_USERNAME")
+
+        if [ -n "$user_exists" ]; then
             log_info "Filebrowser user '$FB_USERNAME' already exists. Updating password..."
             filebrowser -d "$NETWORK_VOLUME/filebrowser.db" users update "$FB_USERNAME" --password "$FB_PASSWORD"
             log_info "Password updated for user: $FB_USERNAME"
@@ -227,7 +228,7 @@ install_comfyui_custom_nodes() {
     "dreamo"
   )
 
-  comfy node install "${nodes[@]}"
+  comfy node install "${nodes[@]}" >> /dev/stdout 2>&1
 
   log_info "Custom nodes installation completed."
 
