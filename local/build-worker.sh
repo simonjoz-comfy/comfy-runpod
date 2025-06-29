@@ -13,5 +13,5 @@ else
 fi
 
 echo "Using builder: $BUILDER_NAME"
-# docker buildx bake worker --push
+# docker buildx bake worker
 docker buildx bake --set worker.platform=linux/arm64 worker --load

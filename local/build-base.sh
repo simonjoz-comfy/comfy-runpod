@@ -13,6 +13,6 @@ else
 fi
 
 echo "Using builder: $BUILDER_NAME"
-# docker buildx bake base --push
+# docker buildx bake base
 docker buildx bake --set base.platform=linux/arm64 base --load
 
