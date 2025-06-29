@@ -259,6 +259,7 @@ export_env_vars
 setup_ssh
 start_jupyter
 start_filebrowser
+install_comfyui_custom_nodes
 start_comfyui
 download_all_models
 execute_script "/post-start.sh" "INFO: Running /post-start.sh script..."

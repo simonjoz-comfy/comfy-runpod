@@ -46,7 +46,6 @@ download_model() {
         --min-split-size=100M           # Only split files > 100MB
         --max-overall-download-limit=0  # No speed limit
         --max-download-limit=0          # No per-connection speed limit
-        --file-allocation=falloc        # Pre-allocate space
         --summary-interval=30           # Progress updates every 30s
         --console-log-level=warn        # Less detailed loging
         --download-result=full          # Show complete download summary

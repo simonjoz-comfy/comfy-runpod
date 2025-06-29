@@ -26,7 +26,7 @@ target "base" {
   context    = "./runpod-comfy-base"
   dockerfile = "Dockerfile"
   platforms  = ["linux/amd64"]
-  output     = ["type=registry", "push=true"]
+  output     = ["type=registry"]
   args       = { BASE_IMAGE = "nvidia/cuda:12.6.3-cudnn-devel-ubuntu24.04" }
   tags       = ["${DOCKER_USERNAME}/${DOCKER_BASE_REPO}:${BASE_VERSION}-cuda12.6.3-ubuntu24.04"]
 }
@@ -35,7 +35,7 @@ target "worker" {
   context    = "./runpod-comfy-worker"
   dockerfile = "Dockerfile"
   platforms  = ["linux/amd64"]
-  output     = ["type=registry", "push=true"]
+  output     = ["type=registry"]
   args       = {
     CUDA_VERSION    = "12.6"
     COMFYUI_HOME    = "/ComfyUI"
