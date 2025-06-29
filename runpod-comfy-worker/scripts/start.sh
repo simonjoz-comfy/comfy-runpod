@@ -142,30 +142,15 @@ start_jupyter() {
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────
 start_filebrowser() {
     log_info "Starting Filebrowser..."
-
-    # Check if DB exists; initialize only if it doesn't
-    if [ ! -f "$NETWORK_VOLUME/filebrowser.db" ]; then
-        log_info "Initializing Filebrowser DB..."
-        filebrowser -d "$NETWORK_VOLUME/filebrowser.db" config init
-    else
-        log_info "Detected existing Filebrowser DB. Skipping init."
-    fi
+    rm -f "$NETWORK_VOLUME/filebrowser.db"
+    filebrowser -d "$NETWORK_VOLUME/filebrowser.db" config init
 
     if [ -z "$FB_USERNAME" ] || [ -z "$FB_PASSWORD" ]; then
         no_auth_flag="--no-auth"
         log_warn "Starting Filebrowser with no authentication."
     else
         no_auth_flag=""
-        user_exists=$(filebrowser -d "$NETWORK_VOLUME/filebrowser.db" users ls | grep -w "$FB_USERNAME")
-
-        if [ -n "$user_exists" ]; then
-            log_info "Filebrowser user '$FB_USERNAME' already exists. Updating password..."
-            filebrowser -d "$NETWORK_VOLUME/filebrowser.db" users update "$FB_USERNAME" --password "$FB_PASSWORD"
-            log_info "Password updated for user: $FB_USERNAME"
-        else
-            log_info "Creating Filebrowser admin user: $FB_USERNAME"
-            filebrowser -d "$NETWORK_VOLUME/filebrowser.db" users add "$FB_USERNAME" "$FB_PASSWORD" --perm.admin
-        fi
+        filebrowser -d "$NETWORK_VOLUME/filebrowser.db" users add "$FB_USERNAME" "$FB_PASSWORD" --perm.admin
     fi
 
     filebrowser -d "$NETWORK_VOLUME/filebrowser.db" $no_auth_flag \
