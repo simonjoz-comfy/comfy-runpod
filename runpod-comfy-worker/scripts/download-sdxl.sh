@@ -125,4 +125,11 @@ download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/instantid/sdx
 # InsightFace
 download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/insightface/antelopev2.zip" "$INSIGHT_FACE/antelopev2.zip"
 
+# Get the last background PID
+download_pid=$!
+
+# Wait for it to finish
+wait "$download_pid"
+
+# unzip
 unzip "$INSIGHT_FACE/antelopev2.zip" -d "$INSIGHT_FACE/models/"
