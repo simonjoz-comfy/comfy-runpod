@@ -39,7 +39,7 @@ target "worker" {
   args       = {
     CUDA_VERSION    = "12.6"
     COMFYUI_HOME    = "/ComfyUI"
-    COMFYUI_VERSION = "0.3.32"
+    COMFYUI_VERSION = "0.3.42"
     BASE_IMAGE      = "${DOCKER_USERNAME}/${DOCKER_BASE_REPO}:${BASE_VERSION}-cuda12.6.3-ubuntu24.04"
   }
   tags = ["${DOCKER_USERNAME}/${DOCKER_WORKER_REPO}:${WORKER_VERSION}-cuda12.6.3-ubuntu24.04"]

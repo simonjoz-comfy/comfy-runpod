@@ -9,7 +9,7 @@ FROM $BASE_IMAGE
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────
 ARG CUDA_VERSION="12.6"
 ARG COMFYUI_HOME="/ComfyUI"
-ARG COMFYUI_VERSION="0.3.32"
+ARG COMFYUI_VERSION="0.3.42"
 
 ENV COMFYUI_HOME=$COMFYUI_HOME
 

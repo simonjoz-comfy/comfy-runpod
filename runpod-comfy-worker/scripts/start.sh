@@ -69,7 +69,7 @@ setup_memory_optimization() {
     log_info "Setting up tcmalloc memory optimizations..."
 
     TCMALLOC="$(ldconfig -p | grep libtcmalloc_minimal.so | head -n1 | awk '{print $NF}')"
-    if [[ -n "$TCMALLOC" ]]; then
+    if [ -n "$TCMALLOC" ]; then
         export LD_PRELOAD="$TCMALLOC"
         log_info "The tcmalloc set to: $TCMALLOC"
     else
@@ -81,7 +81,7 @@ setup_memory_optimization() {
 # Setup SSH
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────
 setup_ssh() {
-    if [[ "$PUBLIC_KEY" ]]; then
+    if [ -n "$PUBLIC_KEY" ]; then
         log_info "Public key detected. Setting up SSH..."
 
         mkdir -p ~/.ssh
@@ -127,7 +127,7 @@ export_env_vars() {
 start_jupyter() {
     log_info "Starting Jupyter Lab..."
 
-    nohup python -m jupyter lab --allow-root --no-browser --port=8888 \
+    python -m jupyter lab --allow-root --no-browser --port=8888 \
     --ip=* --FileContentsManager.delete_to_trash=False \
     --ServerApp.terminado_settings='{"shell_command":["/bin/bash"]}' \
     --ServerApp.token="$JUPYTER_PASSWORD" \
@@ -143,16 +143,31 @@ start_jupyter() {
 start_filebrowser() {
     log_info "Starting Filebrowser..."
 
-    filebrowser -d "$NETWORK_VOLUME/filebrowser.db" config init
-
-    if [ -z "$FB_USERNAME" ] || [ -z "$FB_PASSWORD" ]; then
-      local no_auth_flag="--no-auth"
+    # Check if DB exists; initialize only if it doesn't
+    if [ ! -f "$NETWORK_VOLUME/filebrowser.db" ]; then
+        log_info "Initializing Filebrowser DB..."
+        filebrowser -d "$NETWORK_VOLUME/filebrowser.db" config init
     else
-      local no_auth_flag=""
-      filebrowser -d "$NETWORK_VOLUME/filebrowser.db" users add "$FB_USERNAME" "$FB_PASSWORD" --perm.admin
+        log_info "Detected existing Filebrowser DB. Skipping init."
     fi
 
-    nohup filebrowser -d "$NETWORK_VOLUME/filebrowser.db" "$no_auth_flag" \
+    if [ -z "$FB_USERNAME" ] || [ -z "$FB_PASSWORD" ]; then
+        no_auth_flag="--no-auth"
+        log_warn "Starting Filebrowser with no authentication."
+    else
+        no_auth_flag=""
+        # Check if user already exists
+        if filebrowser -d "$NETWORK_VOLUME/filebrowser.db" users list | grep -q "$FB_USERNAME"; then
+            log_info "Filebrowser user '$FB_USERNAME' already exists. Updating password..."
+            filebrowser -d "$NETWORK_VOLUME/filebrowser.db" users update "$FB_USERNAME" --password "$FB_PASSWORD"
+            log_info "Password updated for user: $FB_USERNAME"
+        else
+            log_info "Creating Filebrowser admin user: $FB_USERNAME"
+            filebrowser -d "$NETWORK_VOLUME/filebrowser.db" users add "$FB_USERNAME" "$FB_PASSWORD" --perm.admin
+        fi
+    fi
+
+    filebrowser -d "$NETWORK_VOLUME/filebrowser.db" $no_auth_flag \
     --address 0.0.0.0 --port 4040 --root / > "$NETWORK_VOLUME/filebrowser.log" 2>&1 &
 
     log_info "Filebrowser started"
@@ -164,7 +179,7 @@ start_filebrowser() {
 start_comfyui() {
     log_info "Starting ComfyUI..."
 
-    nohup comfy launch -- --listen 0.0.0.0 --port 3000 >> /dev/stdout 2>&1 &
+    comfy launch -- --listen 0.0.0.0 --port 3000 >> /dev/stdout 2>&1 &
 
     sleep 2
     if ! pgrep -f "comfy launch.*--port 3000" > /dev/null; then
@@ -241,10 +256,29 @@ download_all_models() {
 
     execute_script "/download-common.sh" "INFO: Running download-common script..."
 
-    [[ "$DOWNLOAD_SDXL" == "true" ]] && execute_script "/download-sdxl.sh" "INFO: Downloading SDXL models..."
-    [[ "$DOWNLOAD_FLUX" == "true" ]] && execute_script "/download-flux.sh" "INFO: Downloading Flux models..."
-    [[ "$DOWNLOAD_WAN" == "true" ]] && execute_script "/download-wan.sh" "INFO: Downloading Wan 2.1 models..."
-    [[ "$DOWNLOAD_HUNYUAN_DIT" == "true" ]] && execute_script "/download-hunyuan-dit.sh" "INFO: Downloading Hunyuan DiT models..."
+    if [ "$DOWNLOAD_SDXL" == "true" ]; then
+      execute_script "/download-sdxl.sh" "INFO: Downloading SDXL models..."
+    else
+      log_info "DOWNLOAD_SDXL = $DOWNLOAD_SDXL. Skipping..."
+    fi
+
+    if [ "$DOWNLOAD_FLUX" == "true" ]; then
+      execute_script "/download-flux.sh" "INFO: Downloading Flux models..."
+    else
+      log_info "DOWNLOAD_FLUX = $DOWNLOAD_FLUX. Skipping..."
+    fi
+
+    if [ "$DOWNLOAD_WAN" == "true" ]; then
+      execute_script "/download-wan.sh" "INFO: Downloading Wan 2.1 models..."
+    else
+      log_info "DOWNLOAD_WAN = $DOWNLOAD_WAN. Skipping..."
+    fi
+
+    if [ "$DOWNLOAD_HUNYUAN_DIT" == "true" ]; then
+      execute_script "/download-hunyuan-dit.sh" "INFO: Downloading Hunyuan DiT models..."
+    else
+      log_info "DOWNLOAD_HUNYUAN_DIT = $DOWNLOAD_HUNYUAN_DIT. Skipping..."
+    fi
 
     log_info "Models download completed"
 }
@@ -254,16 +288,19 @@ download_all_models() {
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────
 log_info "Running startup script..."
 
-setup_memory_optimization
-export_env_vars
+
 setup_ssh
+export_env_vars
+setup_memory_optimization
+
 start_jupyter
 start_filebrowser
-install_comfyui_custom_nodes
-start_comfyui
-download_all_models
-execute_script "/post-start.sh" "INFO: Running /post-start.sh script..."
 
+install_comfyui_custom_nodes
+download_all_models
+start_comfyui
+
+execute_script "/post-start.sh" "INFO: Running /post-start.sh script..."
 log_info "All startup scripts completed. Pod is ready to use."
 
 sleep infinity
