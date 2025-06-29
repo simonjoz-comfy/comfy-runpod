@@ -54,4 +54,3 @@ jobs:
           files: docker-bake.hcl
           targets: worker
           push: true
-          no-cache: true
