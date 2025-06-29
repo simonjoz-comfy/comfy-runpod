@@ -38,8 +38,6 @@ with open(extra_model_file_path) as f:
                     os.makedirs(os.path.join(network_volume, path), exist_ok=True)
 EOF
 
-python -m pip uninstall -y pyyaml
-
 
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────
 # Function Definitions

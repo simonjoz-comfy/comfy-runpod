@@ -36,9 +36,13 @@ jobs:
         run: |
           echo "Disk before cleanup:"
           df -h
-          rm -rf /opt/hostedtoolcache || true
+          rm -rf ~/.cache/pip || true
+          sudo rm -rf /opt/hostedtoolcache || true
+          sudo rm -rf /usr/share/miniconda || true
           sudo rm -rf /usr/share/dotnet || true
           sudo rm -rf /usr/local/lib/android || true
+          sudo apt-get clean
+          sudo rm -rf /var/lib/apt/lists/* || true
           docker system prune -af || true
           docker builder prune -af || true
           echo "Disk after cleanup:"
