@@ -156,7 +156,7 @@ start_filebrowser() {
         log_warn "Starting Filebrowser with no authentication."
     else
         no_auth_flag=""
-        user_exists=$(filebrowser -d "$NETWORK_VOLUME/filebrowser.db" users list 2>/dev/null | grep -w "$FB_USERNAME")
+        user_exists=$(filebrowser -d "$NETWORK_VOLUME/filebrowser.db" users ls | grep -w "$FB_USERNAME")
 
         if [ -n "$user_exists" ]; then
             log_info "Filebrowser user '$FB_USERNAME' already exists. Updating password..."
@@ -288,7 +288,6 @@ download_all_models() {
 # Main
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────
 log_info "Running startup script..."
-
 
 setup_ssh
 export_env_vars
