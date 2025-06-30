@@ -10,10 +10,13 @@ FROM $BASE_IMAGE
 ARG CUDA_VERSION="12.6"
 ARG COMFYUI_HOME="/ComfyUI"
 ARG COMFYUI_VERSION="0.3.42"
+ARG PYTORCH_DOWNLOAD_URL="https://download.pytorch.org/whl/cu126"
 
 ENV COMFYUI_HOME=$COMFYUI_HOME
 
 RUN set -eux && \
+    echo "INFO: Install PyTorch with CUDA support..." && \
+    python -m pip install torch torchvision torchaudio --index-url $PYTORCH_DOWNLOAD_URL && \
     echo "INFO: Installing ComfyUI..." && \
     comfy --workspace=$COMFYUI_HOME --skip-prompt install \
     --version $COMFYUI_VERSION --nvidia --cuda-version $CUDA_VERSION && \

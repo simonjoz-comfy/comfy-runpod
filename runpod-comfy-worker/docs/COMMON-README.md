@@ -22,17 +22,44 @@
 
 ## 🟥 BBOX (Object Detection)
 
-| Model name           | File name                   | Size    | Details                             | Download                                                                                        | Source                                                               |
-|----------------------|-----------------------------|---------|-------------------------------------|-------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
-| Face                 | face_yolov9c.pt             | 51.6 MB | Face detection   (YOLOv9c)          | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/bbox/face_yolov9c.pt)             | [HuggingFace](https://huggingface.co/Bingsu/adetailer)               |
-| Eye                  | eyeful_individual_yolov8.pt | 22.5 MB | Eye/individual detection  (YOLOv8s) | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/bbox/eyeful_individual_yolov8.pt) | [CivitAI](https://civitai.com/models/178518?modelVersionId=582139)   |
-| Lips                 | lips-v1.pt                  | 6.22 MB | Lips detection                      | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/bbox/lips-v1.pt)                  | [CivitAI](https://civitai.com/models/138918?modelVersionId=157700)   |
-| Hand                 | hand_yolov9c.pt             | 51.6 MB | Hand detection (YOLOv9c)            | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/bbox/hand_yolov9c.pt)             | [HuggingFace](https://huggingface.co/Bingsu/adetailer)               |
-| Female Single Breast | female-single-breast.pt     | 36.6 MB | Singel breast (nipple) detection    | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/bbox/female-single-breast.pt)     | [CivitAI](https://civitai.com/models/135658?modelVersionId=149588)   |
-| Female Breasts       | female-breasts-v4.7.pt      | 22.5 MB | Female breasts detection            | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/bbox/female-breasts-v4.7.pt)      | [CivitAI](https://civitai.com/models/138918?modelVersionId=688769)   |
-| Buttocks             | buttocks.pt                 | 22.5 MB | Buttocks detection                  | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/bbox/buttocks.pt)                 | [CivitAI](https://civitai.com/models/1156687?modelVersionId=1300950) |
-| Vagina               | vagina-v2.pt                | 6.21 MB | Vagina detection                    | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/bbox/vagina-v2.pt)                | [CivitAI](https://civitai.com/models/132388?modelVersionId=149617)   |
-| Anus                 | anus-v3.pt                  | 22.5 MB | Anus detection                      | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/bbox/anus-v3.pt)                  | [CivitAI](https://civitai.com/models/132388?modelVersionId=334896)   |
+| Model name           | File name                   | Size    | Details                               | Download                                                                                        | Source                                                               |
+|----------------------|-----------------------------|---------|---------------------------------------|-------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
+| Face                 | face_yolov9c.pt             | 51.6 MB | Face detection   (YOLOv9c)            | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/bbox/face_yolov9c.pt)             | [HuggingFace](https://huggingface.co/Bingsu/adetailer)               |
+| Eye                  | eyeful_individual_yolov8.pt | 22.5 MB | Eye/individual detection  (YOLOv8s)   | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/bbox/eyeful_individual_yolov8.pt) | [CivitAI](https://civitai.com/models/178518?modelVersionId=582139)   |
+| Lips                 | lips-v1.pt                  | 6.22 MB | Lips detection                        | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/bbox/lips-v1.pt)                  | [CivitAI](https://civitai.com/models/138918?modelVersionId=157700)   |
+| Hand                 | hand_yolov9c.pt             | 51.6 MB | Hand detection (YOLOv9c)              | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/bbox/hand_yolov9c.pt)             | [HuggingFace](https://huggingface.co/Bingsu/adetailer)               |
+| Female Single Breast | female-single-breast.pt     | 36.6 MB | Singel breast (nipple) detection      | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/bbox/female-single-breast.pt)     | [CivitAI](https://civitai.com/models/135658?modelVersionId=149588)   |
+| Female Breasts       | female-breasts-v4.7.pt      | 22.5 MB | Female breasts detection              | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/bbox/female-breasts-v4.7.pt)      | [CivitAI](https://civitai.com/models/138918?modelVersionId=688769)   |
+| Buttocks             | buttocks.pt                 | 22.5 MB | Buttocks detection                    | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/bbox/buttocks.pt)                 | [CivitAI](https://civitai.com/models/1156687?modelVersionId=1300950) |
+| Vagina               | vagina-v2.pt                | 6.21 MB | Vagina detection                      | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/bbox/vagina-v2.pt)                | [CivitAI](https://civitai.com/models/132388?modelVersionId=149617)   |
+| Anus                 | anus-v3.pt                  | 22.5 MB | Anus detection                        | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/bbox/anus-v3.pt)                  | [CivitAI](https://civitai.com/models/132388?modelVersionId=334896)   |
+| NudeNet              | nudenet-320n.pt             | 6.22 MB | NudeNet: lightweight Nudity detection | [Download](https://huggingface.co/SimonJoz/nudenet/resolve/main/320n.pt)                        | [GitHub](https://github.com/notAI-tech/NudeNet)                      |
+| NudeNet              | nudenet-640m.pt             | 52 MB   | NudeNet: lightweight Nudity detection | [Download](https://huggingface.co/SimonJoz/nudenet/resolve/main/640m.pt)                        | [GitHub](https://github.com/notAI-tech/NudeNet)                      |
+
+NudeNet Classes:
+
+```pyton
+ all_labels = [
+    "FEMALE_GENITALIA_COVERED",
+    "FACE_FEMALE",
+    "BUTTOCKS_EXPOSED",
+    "FEMALE_BREAST_EXPOSED",
+    "FEMALE_GENITALIA_EXPOSED",
+    "MALE_BREAST_EXPOSED",
+    "ANUS_EXPOSED",
+    "FEET_EXPOSED",
+    "BELLY_COVERED",
+    "FEET_COVERED",
+    "ARMPITS_COVERED",
+    "ARMPITS_EXPOSED",
+    "FACE_MALE",
+    "BELLY_EXPOSED",
+    "MALE_GENITALIA_EXPOSED",
+    "ANUS_COVERED",
+    "FEMALE_BREAST_COVERED",
+    "BUTTOCKS_COVERED",
+]
+```
 
 ## 🟪 SEGM (Segmentation)
 
@@ -40,8 +67,8 @@
 |-------------------|----------------------------------|---------|-------------------|------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
 | BiSeNetV1 CelebHQ | face_bisenetv1_celebhq_79999.pth | 53.3 MB | Face segmentation | [Download](https://huggingface.co/SimonJoz/comfy/resolve/main/segm/face_bisenetv1_celebhq_79999.pth) | [GitHub](https://github.com/zllrunning/face-parsing.PyTorch) |
 
-## Total Size: 0.68 GB
+## Total Size: 0.74 GB
 
 ```shell
-echo "scale=2; (67+9.02+9.02+67+67.2+67.1+67+51.6+51.6+51.6+22.5+53.3+6.22+36.6+22.5+22.5+6.21+22.5)/1024" | bc | xargs -I{} echo "Total: {} GB"
+echo "scale=2; (6.22+52+67+9.02+9.02+67+67.2+67.1+67+51.6+51.6+51.6+22.5+53.3+6.22+36.6+22.5+22.5+6.21+22.5)/1024" | bc | xargs -I{} echo "Total: {} GB"
 ```

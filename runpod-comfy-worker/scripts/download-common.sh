@@ -82,9 +82,12 @@ download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/bbox/vagina-v
 # Anus
 download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/bbox/anus-v3.pt" "$BBOXES/anus-v3.pt"
 
+# NudeNet: lightweight Nudity detection
+download_model "https://huggingface.co/SimonJoz/nudenet/resolve/main/320n.pt" "$BBOXES/nudenet-320n.pt"
+download_model "https://huggingface.co/SimonJoz/nudenet/resolve/main/640m.pt" "$BBOXES/nudenet-640m.pt"
+
 # ──────────────────────────────────────────────────────────────────────────────────────────────────────
 # SEGM
 # ──────────────────────────────────────────────────────────────────────────────────────────────────────
 # face_bisenetv1_celebhq_79999
 download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/segm/face_bisenetv1_celebhq_79999.pth" "$SEGM/face_bisenetv1_celebhq_79999.pth"
-

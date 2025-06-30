@@ -71,7 +71,7 @@ setup_memory_optimization() {
     TCMALLOC="$(ldconfig -p | grep libtcmalloc_minimal.so | head -n1 | awk '{print $NF}')"
     if [ -n "$TCMALLOC" ]; then
         export LD_PRELOAD="$TCMALLOC"
-        log_info "The tcmalloc set to: $TCMALLOC"
+        log_info "✅ The tcmalloc set to: $TCMALLOC"
     else
         log_warn "The tcmalloc not found. Proceeding without LD_PRELOAD."
     fi
@@ -134,7 +134,7 @@ start_jupyter() {
     --ServerApp.allow_origin=* \
     --ServerApp.preferred_dir="$NETWORK_VOLUME" &> /jupyter.log &
 
-    log_info "Jupyter Lab started."
+    log_info "✅ Jupyter Lab started."
 }
 
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -156,7 +156,7 @@ start_filebrowser() {
     filebrowser -d "$NETWORK_VOLUME/filebrowser.db" $no_auth_flag \
     --address 0.0.0.0 --port 4040 --root / > "$NETWORK_VOLUME/filebrowser.log" 2>&1 &
 
-    log_info "Filebrowser started"
+    log_info "✅ Filebrowser started"
 }
 
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -172,7 +172,7 @@ start_comfyui() {
          log_error "Failed to start ComfyUI" && exit 1
     fi
 
-    log_info "ComfyUI started."
+    log_info "✅ ComfyUI started."
 }
 
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -211,11 +211,16 @@ install_comfyui_custom_nodes() {
     "gguf@2.1.3"
     "x-flux-comfyui"
     "dreamo"
+    "comfyui-easy-use@1.3.0"
+    "efficiency-nodes-comfyui@1.0.7"
   )
 
-  comfy node install "${nodes[@]}" >> /dev/stdout 2>&1
+  for node in "${nodes[@]}"; do
+      echo "Installing $node"
+      comfy node install "$node"
+  done
 
-  log_info "Custom nodes installation completed."
+  log_info "✅ Custom nodes installation completed."
 
   # Cleanup
   # ────────────────────────────────────────────────────────────────────────────────
@@ -266,7 +271,14 @@ download_all_models() {
       log_info "DOWNLOAD_HUNYUAN_DIT = $DOWNLOAD_HUNYUAN_DIT. Skipping..."
     fi
 
-    log_info "Models download completed"
+    log_info "Waiting for downloads to complete..."
+
+    while pgrep -x "aria2c" > /dev/null; do
+        echo "Downloads still in progress..."
+        sleep 5
+    done
+
+    log_info "✅ Models download completed"
 }
 
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -285,7 +297,6 @@ install_comfyui_custom_nodes
 download_all_models
 start_comfyui
 
-execute_script "/post-start.sh" "INFO: Running /post-start.sh script..."
-log_info "All startup scripts completed. Pod is ready to use."
+log_info "✅ All startup scripts completed. Pod is ready to use."
 
 sleep infinity
