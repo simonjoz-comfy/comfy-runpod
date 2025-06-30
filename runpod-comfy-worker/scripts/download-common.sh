@@ -14,11 +14,11 @@ source /download-model.sh
 # ──────────────────────────────────────────────────────────────────────────────────────────────────────
 
 SAMS="$MODELS_PATH/sams"
-SEGM="$MODELS_PATH/ultralytics/segm"
-BBOXES="$MODELS_PATH/ultralytics/bbox"
 UPSCALERS="$MODELS_PATH/upscale_models"
+SEGM="$COMFYUI_HOME/models/ultralytics/segm"
+BBOXES="$COMFYUI_HOME/models/ultralytics/bbox"
 
-mkdir -p "$SAMS" "$SEGM" "$BBOXES" "$UPSCALERS"
+mkdir -p "$SAMS" "$UPSCALERS" "$SEGM" "$BBOXES"
 
 # ──────────────────────────────────────────────────────────────────────────────────────────────────────
 # Download Upscalers

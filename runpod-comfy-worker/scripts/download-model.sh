@@ -37,21 +37,25 @@ download_model() {
 
     # aria2c options
     local aria2_opts=(
-        -x 16                           # 16 connections (max out bandwidth)
-        -s 16                           # 16 segments for large files
-        -k 5M                           # 5MB chunks (better for large files)
-        --continue=true                 # Essential for resume capability
-        --max-tries=5                   # Retries
-        --retry-wait=2                  # Retry wait - 5s (network might need recovery time)
-        --min-split-size=100M           # Only split files > 100MB
-        --max-overall-download-limit=0  # No speed limit
+        -x 16                           # 16 connections per server (max bandwidth)
+        -s 16                           # 16 segments per file (better for large files)
+        -k 5M                           # 5MB chunk size
+        --continue=true                 # Resume partial downloads
+        --max-tries=5                   # Retry up to 5 times
+        --retry-wait=2                  # Wait 2 seconds between retries
+        --min-split-size=25M            # Split files only if >25MB
+        --max-overall-download-limit=0  # No overall speed limit
         --max-download-limit=0          # No per-connection speed limit
-        --console-log-level=warn        # Less detailed loging
-        --download-result=full          # Show complete download summary
-        --auto-file-renaming=false      # Don't auto-rename on conflicts
-        --allow-overwrite=false         # Don't overwrite existing files
-        -d "$destination_dir"
-        -o "$destination_file"
+        --console-log-level=warn        # Show warnings/errors only
+        --download-result=full          # Show full download summary
+        --auto-file-renaming=false      # Don’t rename files on conflict
+        --allow-overwrite=true          # Overwrite existing files (set false to avoid)
+        --check-certificate=true        # Verify SSL certificates
+        --enable-http-keep-alive=true   # Keep HTTP connections alive
+        --enable-http-pipelining=true   # Enable HTTP pipelining
+        --header="Accept: */*"          # Accept all content types
+        -d "$destination_dir"           # Download directory
+        -o "$destination_file"          # Output filename
     )
 
     # Background download

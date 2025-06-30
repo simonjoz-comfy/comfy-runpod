@@ -43,13 +43,13 @@ download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/checkpoint/sd
 # Realistic NSFW Checkpoints
 # ──────────────────────────────────────────────────────────────────────────────────────────────────────
 # Big Lust v1.6
-download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/checkpoint/sdxl/big-lust-v1.6.safetensors" "$CHECKPOINTS/big-lust-v1.6.safetensors"
+#download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/checkpoint/sdxl/big-lust-v1.6.safetensors" "$CHECKPOINTS/big-lust-v1.6.safetensors"
 
 # Big Love v2.5
 download_model  "https://huggingface.co/SimonJoz/comfy/resolve/main/checkpoint/sdxl/big-love-sdxl-v2.5.safetensors" "$CHECKPOINTS/big-love-sdxl-v2.5.safetensors"
 
 # Realism By Stable Yogi v5-xl FP16
-download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/checkpoint/sdxl/realism-by-stable-yogi-v5-xl-fp16.safetensors" "$CHECKPOINTS/realism-by-stable-yogi-v5-xl-fp16.safetensors"
+#download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/checkpoint/sdxl/realism-by-stable-yogi-v5-xl-fp16.safetensors" "$CHECKPOINTS/realism-by-stable-yogi-v5-xl-fp16.safetensors"
 
 # Realism By Stable Yogi v5-xl FP32
 download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/checkpoint/sdxl/realism-by-stable-yogi-v5-xl-fp32.safetensors" "$CHECKPOINTS/realism-by-stable-yogi-v5-xl-fp32.safetensors"
@@ -87,10 +87,10 @@ download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/lora/sdxl/hou
 download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/lora/sdxl/round-ass-v1.1-sdxl-lora.safetensors" "$LORAS/round-ass-v1.1-sdxl-lora.safetensors"
 
 # Big Round Butt
-download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/lora/sdxl/big-round-butt-sdxl-lora.safetensors" "$LORAS/big-round-butt-sdxl-lora.safetensors"
+#download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/lora/sdxl/big-round-butt-sdxl-lora.safetensors" "$LORAS/big-round-butt-sdxl-lora.safetensors"
 
 # Dumptruck Booty - Experimental
-download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/lora/sdxl/dumpy-ass-sdxl-lora.safetensors" "$LORAS/dumpy-ass-sdxl-lora.safetensors"
+#download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/lora/sdxl/dumpy-ass-sdxl-lora.safetensors" "$LORAS/dumpy-ass-sdxl-lora.safetensors"
 
 
 # ──────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -100,13 +100,13 @@ download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/lora/sdxl/dum
 download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/lora/sdxl/subtle-ultrares-v1-sdxl-big-love-2.5.safetensors" "$LORAS/subtle-ultrares-v1-sdxl-big-love-2.5.safetensors"
 
 # No Bra SDXL
-download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/lora/sdxl/no-bra-v1-sdxl-lora.safetensors" "$LORAS/no-bra-v1-sdxl-lora.safetensors"
+#download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/lora/sdxl/no-bra-v1-sdxl-lora.safetensors" "$LORAS/no-bra-v1-sdxl-lora.safetensors"
 
 # Detailed nipples XL
-download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/lora/sdxl/detailed-nipples-sdxl-lora.safetensors" "$LORAS/detailed-nipples-sdxl-lora.safetensors"
+#download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/lora/sdxl/detailed-nipples-sdxl-lora.safetensors" "$LORAS/detailed-nipples-sdxl-lora.safetensors"
 
 # NSFW POV All In One SDXL
-download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/lora/sdxl/nsfw-pov-all-in-one-lora-sdxl-000009.safetensors" "$LORAS/nsfw-pov-all-in-one-lora-sdxl-000009.safetensors"
+#download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/lora/sdxl/nsfw-pov-all-in-one-lora-sdxl-000009.safetensors" "$LORAS/nsfw-pov-all-in-one-lora-sdxl-000009.safetensors"
 
 
 # ──────────────────────────────────────────────────────────────────────────────────────────────────────

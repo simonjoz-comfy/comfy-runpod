@@ -3,7 +3,7 @@ variable "BASE_VERSION" {
 }
 
 variable "WORKER_VERSION" {
-  default = "0.1.0"
+  default = "0.1.1"
 }
 
 variable "DOCKER_USERNAME" {

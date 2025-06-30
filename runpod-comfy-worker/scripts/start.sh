@@ -213,6 +213,7 @@ install_comfyui_custom_nodes() {
     "dreamo"
     "comfyui-easy-use@1.3.0"
     "efficiency-nodes-comfyui@1.0.7"
+    "comfyui-custom-scripts@1.2.5"
   )
 
   for node in "${nodes[@]}"; do
@@ -242,42 +243,49 @@ install_comfyui_custom_nodes() {
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────
 # Download Models
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────
+wait_for_download_completion() {
+  local model_type=$1
+  while pgrep -x "aria2c" > /dev/null; do
+    echo "INFO: Downloading $model_type models in progress..."
+    sleep 5
+  done
+}
+
 download_all_models() {
     log_info "Models download started..."
 
     execute_script "/download-common.sh" "INFO: Running download-common script..."
+    wait_for_download_completion "common"
 
     if [ "$DOWNLOAD_SDXL" == "true" ]; then
       execute_script "/download-sdxl.sh" "INFO: Downloading SDXL models..."
+      wait_for_download_completion "SDXL"
     else
       log_info "DOWNLOAD_SDXL = $DOWNLOAD_SDXL. Skipping..."
     fi
 
     if [ "$DOWNLOAD_FLUX" == "true" ]; then
       execute_script "/download-flux.sh" "INFO: Downloading Flux models..."
+      wait_for_download_completion "Flux"
     else
       log_info "DOWNLOAD_FLUX = $DOWNLOAD_FLUX. Skipping..."
     fi
 
     if [ "$DOWNLOAD_WAN" == "true" ]; then
       execute_script "/download-wan.sh" "INFO: Downloading Wan 2.1 models..."
+      wait_for_download_completion "Wan 2.1"
     else
       log_info "DOWNLOAD_WAN = $DOWNLOAD_WAN. Skipping..."
     fi
 
     if [ "$DOWNLOAD_HUNYUAN_DIT" == "true" ]; then
       execute_script "/download-hunyuan-dit.sh" "INFO: Downloading Hunyuan DiT models..."
+      wait_for_download_completion "Hunyuan DiT"
     else
       log_info "DOWNLOAD_HUNYUAN_DIT = $DOWNLOAD_HUNYUAN_DIT. Skipping..."
     fi
 
-    log_info "Waiting for downloads to complete..."
-
-    while pgrep -x "aria2c" > /dev/null; do
-        echo "Downloads still in progress..."
-        sleep 5
-    done
-
+    wait_for_download_completion ""
     log_info "✅ Models download completed"
 }
 
