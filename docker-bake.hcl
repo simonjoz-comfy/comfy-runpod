@@ -1,5 +1,5 @@
 variable "BASE_VERSION" {
-  default = "0.1.0"
+  default = "0.1.1"
 }
 
 variable "WORKER_VERSION" {

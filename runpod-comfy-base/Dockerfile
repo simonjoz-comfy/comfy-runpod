@@ -102,11 +102,13 @@ ENV PYTHONDONTWRITEBYTECODE=1
 #
 # Development Tools and Libraries:
 #
-# - build-essential                      : Compiler and essential build tools (gcc, make)
+# - build-essential                      : Compiler and essential build tools (gcc, g++, make)
 # - cmake                                : Build system generator, commonly used for C++ projects
 # - libffi-dev                           : Foreign Function Interface library used by many Python packages for C bindings
 # - libhdf5-serial-dev                   : Hierarchical Data Format library, used for storing large data arrays
 # - libssl-dev                           : SSL/TLS cryptography library for secure connections
+# - libboost-all-dev                     : Boost C++ libraries, required for building dlib and other C++ libraries
+# - pkg-config                           : Helper tool used during compilation to retrieve metadata for installed libraries
 #
 # Network and Storage:
 #
@@ -166,7 +168,7 @@ RUN set -eux && \
     # ─────────────────────────────────────────────────────────────────────────────────────────────
     # Python and development
     # ─────────────────────────────────────────────────────────────────────────────────────────────
-    libffi-dev libhdf5-serial-dev libsm6 libssl-dev \
+    libffi-dev libhdf5-serial-dev libsm6 libssl-dev libboost-all-dev pkg-config \
     # ─────────────────────────────────────────────────────────────────────────────────────────────
     # Python
     # ─────────────────────────────────────────────────────────────────────────────────────────────
