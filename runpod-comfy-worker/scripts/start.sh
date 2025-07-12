@@ -145,7 +145,7 @@ start_filebrowser() {
     rm -f "$NETWORK_VOLUME/filebrowser.db"
     filebrowser -d "$NETWORK_VOLUME/filebrowser.db" config init
 
-    if [ -z "$FB_USERNAME" ] || [ -z "$FB_PASSWORD" ]; then
+    if [ -n "$FB_USERNAME" ] || [ -n "$FB_PASSWORD" ]; then
         no_auth_flag="--no-auth"
         log_warn "Starting Filebrowser with no authentication."
     else
@@ -179,8 +179,6 @@ start_comfyui() {
 # Install ComfyUI Custom Nodes
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────
 install_comfyui_custom_nodes() {
-  log_info "Installing Custom Nodes..."
-
   nodes=(
     "ComfyUI-GGUF@1.1.0"
     "ComfyUI-Crystools@1.22.1"
@@ -215,6 +213,13 @@ install_comfyui_custom_nodes() {
     "efficiency-nodes-comfyui@1.0.7"
     "comfyui-custom-scripts@1.2.5"
   )
+
+  if [ -n "$CUSTOM_NODES_LIST" ]; then
+      IFS=' ' read -r -a nodes <<< "$CUSTOM_NODES_LIST"
+      log_info "Custom nodes list detected. Installing configured nodes: ${nodes[*]}"
+  else
+      log_info "Installing Default Custom Nodes: ${nodes[*]}"
+  fi
 
   for node in "${nodes[@]}"; do
       echo "Installing $node"
@@ -275,7 +280,7 @@ download_all_models() {
       execute_script "/download-flux-kontext.sh" "INFO: Downloading Flux Kontext models..."
       wait_for_download_completion "Flux Kontext"
     else
-      log_info "DOWNLOAD_FLUX = $DOWNLOAD_FLUX. Skipping..."
+      log_info "DOWNLOAD_FLUX_KONTEXT = $DOWNLOAD_FLUX. Skipping..."
     fi
 
     if [ "$DOWNLOAD_WAN" == "true" ]; then
