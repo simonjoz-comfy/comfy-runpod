@@ -51,6 +51,7 @@ COPY --chmod=755 ./scripts/download-common.sh /
 COPY --chmod=755 ./scripts/download-hunyuan-dit.sh /
 COPY --chmod=755 ./scripts/download-sdxl.sh /
 COPY --chmod=755 ./scripts/download-flux.sh /
+COPY --chmod=755 ./scripts/download-flux-kontext.sh /
 COPY --chmod=755 ./scripts/download-wan.sh /
 COPY --chmod=755 ./scripts/start.sh /
 

@@ -28,5 +28,3 @@ comfyui:
   vae_approx: models/vae_approx/
   ipadapter: models/ipadapter/
   instantid: models/instantid/
-  ultralytics_bbox: models/ultralytics/bbox/
-  ultralytics_segm: models/ultralytics/segm/

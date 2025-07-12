@@ -271,6 +271,13 @@ download_all_models() {
       log_info "DOWNLOAD_FLUX = $DOWNLOAD_FLUX. Skipping..."
     fi
 
+    if [ "$DOWNLOAD_FLUX_KONTEXT" == "true" ]; then
+      execute_script "/download-flux-kontext.sh" "INFO: Downloading Flux Kontext models..."
+      wait_for_download_completion "Flux Kontext"
+    else
+      log_info "DOWNLOAD_FLUX = $DOWNLOAD_FLUX. Skipping..."
+    fi
+
     if [ "$DOWNLOAD_WAN" == "true" ]; then
       execute_script "/download-wan.sh" "INFO: Downloading Wan 2.1 models..."
       wait_for_download_completion "Wan 2.1"

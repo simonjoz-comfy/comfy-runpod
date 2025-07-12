@@ -18,17 +18,16 @@ PULID="$MODELS_PATH/pulid"
 VEA="$MODELS_PATH/vae/flux"
 UNET="$MODELS_PATH/unet/flux"
 LORAS="$MODELS_PATH/loras/flux"
-UPSCALERS="$MODELS_PATH/upscale_models"
 CONTROL_NET="$MODELS_PATH/controlnet/flux"
 CHECKPOINTS="$MODELS_PATH/checkpoints/flux"
 CLIP_VISION="$MODELS_PATH/clip_vision/flux"
 XLABS_IP_ADAPTERS="$COMFYUI_HOME/models/xlabs/ipadapters"
 
-mkdir -p "$CLIP" "$PULID" "$VEA" "$UNET" "$LORAS" "$UPSCALERS" \
+mkdir -p "$CLIP" "$PULID" "$VEA" "$UNET" "$LORAS" \
 "$CONTROL_NET" "$CHECKPOINTS" "$CLIP_VISION" "$XLABS_IP_ADAPTERS"
 
 # ──────────────────────────────────────────────────────────────────────────────────────────────────────
-# Download Checkpoints
+# Checkpoints
 # ──────────────────────────────────────────────────────────────────────────────────────────────────────
 # Flux.1 Dev
 download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/checkpoint/flux/flux1-dev.safetensors" "$UNET/flux1-dev.safetensors"

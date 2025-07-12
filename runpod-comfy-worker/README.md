@@ -30,17 +30,18 @@ image and provides a ready-to-use ComfyUI environment optimized for [RunPod](htt
 
 ## Environment Variables
 
-| Variable               | Description                                                  | Default |
-|------------------------|--------------------------------------------------------------|---------|
-| `NETWORK_VOLUME`       | Path to volume disk storage for models  (e.g., `/workspace`) | `unset` |
-| `PUBLIC_KEY`           | Injects SSH key for remote access                            | `unset` |
-| `JUPYTER_PASSWORD`     | Required for Jupyter Lab access (used as login token)        | `unset` |
-| `FB_USERNAME`          | Required Filebrowser admin username                          | `unset` |
-| `FB_PASSWORD`          | Required Filebrowser admin password                          | `unset` |
-| `DOWNLOAD_SDXL`        | If `true`, download SDXL models                              | `false` |
-| `DOWNLOAD_FLUX`        | If `true`, download Flux.1 Dev models                        | `false` |
-| `DOWNLOAD_WAN`         | If `true`, download Wan 2.1 models                           | `false` |
-| `DOWNLOAD_HUNYUAN_DIT` | If `true`, download Hunyuan DiT models                       | `false` |
+| Variable                | Description                                                  | Default |
+|-------------------------|--------------------------------------------------------------|---------|
+| `NETWORK_VOLUME`        | Path to volume disk storage for models  (e.g., `/workspace`) | `unset` |
+| `PUBLIC_KEY`            | Injects SSH key for remote access                            | `unset` |
+| `JUPYTER_PASSWORD`      | Required for Jupyter Lab access (used as login token)        | `unset` |
+| `FB_USERNAME`           | Required Filebrowser admin username                          | `unset` |
+| `FB_PASSWORD`           | Required Filebrowser admin password                          | `unset` |
+| `DOWNLOAD_SDXL`         | If `true`, download SDXL models                              | `false` |
+| `DOWNLOAD_FLUX`         | If `true`, download Flux.1 Dev models                        | `false` |
+| `DOWNLOAD_FLUX_KONTEXT` | If `true`, download Flux.1 Dev Kontext models                | `false` |
+| `DOWNLOAD_WAN`          | If `true`, download Wan 2.1 models                           | `false` |
+| `DOWNLOAD_HUNYUAN_DIT`  | If `true`, download Hunyuan DiT models                       | `false` |
 
 ## Usage
 
@@ -66,6 +67,7 @@ docker run --gpus all \
   -e FB_PASSWORD=<pw> \
   -e DOWNLOAD_SDXL=true \
   -e DOWNLOAD_FLUX=true \
+  -e DOWNLOAD_FLUX_KONTEXT=true \
   -e DOWNLOAD_WAN=true \
   -e DOWNLOAD_HUNYUAN_DIT=true \
   -p 3000:3000 \
@@ -100,6 +102,7 @@ services:
       FB_PASSWORD: "${FB_PASSWORD}"
       DOWNLOAD_SDXL: "true"
       DOWNLOAD_FLUX: "true"
+      DOWNLOAD_FLUX_KONTEXT: "true"
       DOWNLOAD_WAN: "true"
       DOWNLOAD_HUNYUAN_DIT: "true"
     ports:
