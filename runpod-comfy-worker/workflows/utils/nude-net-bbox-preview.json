@@ -1,0 +1,297 @@
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "revision": 0,
+  "last_node_id": 64,
+  "last_link_id": 13,
+  "nodes": [
+    {
+      "id": 57,
+      "type": "UltralyticsDetectorProvider",
+      "pos": [
+        424,
+        293
+      ],
+      "size": [
+        270,
+        78
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "BBOX_DETECTOR",
+          "type": "BBOX_DETECTOR",
+          "links": [
+            7
+          ]
+        },
+        {
+          "name": "SEGM_DETECTOR",
+          "type": "SEGM_DETECTOR",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-subpack",
+        "ver": "1.3.2",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "UltralyticsDetectorProvider"
+      },
+      "widgets_values": [
+        "bbox/640m.pt"
+      ]
+    },
+    {
+      "id": 62,
+      "type": "LoadImage",
+      "pos": [
+        428,
+        497
+      ],
+      "size": [
+        274.080078125,
+        314
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            13
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.43",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "c21e3252ea42e31d1ce35d4763f6ddd8.jpg",
+        "image"
+      ]
+    },
+    {
+      "id": 60,
+      "type": "BboxDetectorSEGS",
+      "pos": [
+        718,
+        293
+      ],
+      "size": [
+        258,
+        231
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "bbox_detector",
+          "type": "BBOX_DETECTOR",
+          "link": 7
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 13
+        },
+        {
+          "name": "detailer_hook",
+          "shape": 7,
+          "type": "DETAILER_HOOK",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SEGS",
+          "type": "SEGS",
+          "links": [
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "ver": "8.15.3",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "BboxDetectorSEGS"
+      },
+      "widgets_values": [
+        0.5,
+        10,
+        2,
+        5,
+        "all\n"
+      ]
+    },
+    {
+      "id": 58,
+      "type": "SEGSPreview",
+      "pos": [
+        999,
+        288
+      ],
+      "size": [
+        270,
+        314
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "segs",
+          "type": "SEGS",
+          "link": 8
+        },
+        {
+          "name": "fallback_image_opt",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": [
+            9
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "ver": "8.15.3",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "SEGSPreview"
+      },
+      "widgets_values": [
+        true,
+        0.2
+      ]
+    },
+    {
+      "id": 61,
+      "type": "PreviewImage",
+      "pos": [
+        1294,
+        285
+      ],
+      "size": [
+        640,
+        633
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 9
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.43",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 63,
+      "type": "Note",
+      "pos": [
+        722,
+        572
+      ],
+      "size": [
+        253,
+        314
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Classes",
+      "properties": {},
+      "widgets_values": [
+        "FACE_FEMALE\n\nFEMALE_BREAST_EXPOSED\nFEMALE_BREAST_COVERED\n\nBELLY_EXPOSED\nBELLY_COVERED\n\nFEMALE_GENITALIA_COVERED\nFEMALE_GENITALIA_EXPOSED\n\nBUTTOCKS_COVERED\nBUTTOCKS_EXPOSED\n\nANUS_EXPOSED\nANUS_COVERED\n\nFEET_EXPOSED\nFEET_COVERED\n\nARMPITS_COVERED\nARMPITS_EXPOSED\n\n\n"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [
+      7,
+      57,
+      0,
+      60,
+      0,
+      "BBOX_DETECTOR"
+    ],
+    [
+      8,
+      60,
+      0,
+      58,
+      0,
+      "SEGS"
+    ],
+    [
+      9,
+      58,
+      0,
+      61,
+      0,
+      "IMAGE"
+    ],
+    [
+      13,
+      62,
+      0,
+      60,
+      1,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ue_links": [],
+    "ds": {
+      "scale": 1,
+      "offset": [
+        -323,
+        -132
+      ]
+    },
+    "links_added_by_ue": [],
+    "frontendVersion": "1.23.4",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

@@ -18,12 +18,13 @@ PULID="$MODELS_PATH/pulid"
 VEA="$MODELS_PATH/vae/flux"
 UNET="$MODELS_PATH/unet/flux"
 LORAS="$MODELS_PATH/loras/flux"
+INSIGHT_FACE="$MODELS_PATH/insightface"
 CONTROL_NET="$MODELS_PATH/controlnet/flux"
 CHECKPOINTS="$MODELS_PATH/checkpoints/flux"
 CLIP_VISION="$MODELS_PATH/clip_vision/flux"
 XLABS_IP_ADAPTERS="$COMFYUI_HOME/models/xlabs/ipadapters"
 
-mkdir -p "$CLIP" "$PULID" "$VEA" "$UNET" "$LORAS" \
+mkdir -p "$CLIP" "$PULID" "$VEA" "$UNET" "$LORAS" "$INSIGHT_FACE" \
 "$CONTROL_NET" "$CHECKPOINTS" "$CLIP_VISION" "$XLABS_IP_ADAPTERS"
 
 # ──────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -115,3 +116,18 @@ download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/clip-vision/c
 # ──────────────────────────────────────────────────────────────────────────────────────────────────────
 # Flux PulID v0.9.1
 download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/pulid/pulid_flux_v0.9.1.safetensors" "$PULID/pulid_flux_v0.9.1.safetensors"
+
+
+# ──────────────────────────────────────────────────────────────────────────────────────────────────────
+# InsightFace
+# ──────────────────────────────────────────────────────────────────────────────────────────────────────
+download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/insightface/antelopev2.zip" "$INSIGHT_FACE/antelopev2.zip"
+
+# Get the last background PID
+download_pid=$!
+
+# Wait for it to finish
+wait "$download_pid"
+
+# unzip
+unzip "$INSIGHT_FACE/antelopev2.zip" -d "$INSIGHT_FACE/models/"

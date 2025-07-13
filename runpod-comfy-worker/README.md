@@ -2,7 +2,7 @@
 
 ![Docker Pulls](https://img.shields.io/docker/pulls/simonjoz/runpod-comfy-worker)
 ![Docker Stars](https://img.shields.io/docker/stars/simonjoz/runpod-comfy-worker)
-![Docker Image Size](https://img.shields.io/docker/image-size/simonjoz/runpod-comfy-worker/0.1.0-cuda12.6.3-ubuntu24.04)
+![Docker Image Size](https://img.shields.io/docker/image-size/simonjoz/runpod-comfy-worker/0.1.1-cuda12.6.3-ubuntu24.04)
 ![Docker Image Version](https://img.shields.io/docker/v/simonjoz/runpod-comfy-worker)
 
 This Docker image is built on top of
