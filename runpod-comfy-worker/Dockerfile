@@ -17,7 +17,7 @@ ENV COMFYUI_HOME=$COMFYUI_HOME
 RUN set -eux && \
     echo "INFO: Install PyTorch with CUDA support..." && \
     python -m pip install torch torchvision torchaudio --index-url $PYTORCH_DOWNLOAD_URL && \
-    python -m pip hf_transfer && \
+    python -m pip install hf_transfer && \
     echo "INFO: Installing ComfyUI..." && \
     comfy --workspace=$COMFYUI_HOME --skip-prompt install \
     --version $COMFYUI_VERSION --nvidia --cuda-version $CUDA_VERSION && \
