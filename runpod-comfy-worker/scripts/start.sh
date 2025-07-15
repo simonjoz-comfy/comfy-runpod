@@ -215,7 +215,7 @@ install_comfyui_custom_nodes() {
   )
 
   if [ -n "$CUSTOM_NODES_LIST" ]; then
-      IFS=' ' read -r -a nodes <<< "$CUSTOM_NODES_LIST"
+      IFS=',' read -r -a nodes <<< "$CUSTOM_NODES_LIST"
       log_info "Custom nodes list detected. Installing configured nodes: ${nodes[*]}"
   else
       log_info "Installing Default Custom Nodes: ${nodes[*]}"
