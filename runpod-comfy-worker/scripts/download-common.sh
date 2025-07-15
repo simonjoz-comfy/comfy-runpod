@@ -44,6 +44,9 @@ download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/upscalers/8xN
 # 4x_UniversalUpscalerV2-Sharp_101000_G
 download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/upscalers/4x_UniversalUpscalerV2-Sharp_101000_G.pth" "$UPSCALERS/4x_UniversalUpscalerV2-Sharp_101000_G.pth"
 
+# 4xNomosUniDAT_otf: https://openmodeldb.info/models/4x-NomosUniDAT-otf
+# ──────────────────────────────────────────────────────────────────────────────────────────────────────
+download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/upscalers/4xNomosUniDAT_otf.pth" "$UPSCALERS/4xNomosUniDAT_otf.pth"
 
 # ──────────────────────────────────────────────────────────────────────────────────────────────────────
 # SAM

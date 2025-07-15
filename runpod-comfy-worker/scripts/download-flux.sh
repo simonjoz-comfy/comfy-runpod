@@ -117,7 +117,6 @@ download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/clip-vision/c
 # Flux PulID v0.9.1
 download_model "https://huggingface.co/SimonJoz/comfy/resolve/main/pulid/pulid_flux_v0.9.1.safetensors" "$PULID/pulid_flux_v0.9.1.safetensors"
 
-
 # ──────────────────────────────────────────────────────────────────────────────────────────────────────
 # InsightFace
 # ──────────────────────────────────────────────────────────────────────────────────────────────────────

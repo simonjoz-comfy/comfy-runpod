@@ -1,0 +1,715 @@
+{
+  "id": "a57777ad-3715-4bc3-b7e9-65ec7d0560cc",
+  "revision": 0,
+  "last_node_id": 14,
+  "last_link_id": 14,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "XlabsSampler",
+      "pos": [
+        681.3286743164062,
+        1353.0740966796875
+      ],
+      "size": [
+        342.5999755859375,
+        282
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 1
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 2
+        },
+        {
+          "name": "neg_conditioning",
+          "type": "CONDITIONING",
+          "link": 3
+        },
+        {
+          "name": "latent_image",
+          "shape": 7,
+          "type": "LATENT",
+          "link": 4
+        },
+        {
+          "name": "controlnet_condition",
+          "shape": 7,
+          "type": "ControlNetCondition",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "x-flux-comfyui",
+        "ver": "00328556efc9472410d903639dc9e68a8471f7ac",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "XlabsSampler"
+      },
+      "widgets_values": [
+        257762932021983,
+        "fixed",
+        25,
+        1,
+        3.5,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "type": "ApplyFluxControlNet",
+      "pos": [
+        212.85769653320312,
+        955.9630126953125
+      ],
+      "size": [
+        393,
+        98
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "controlnet",
+          "type": "FluxControlNet",
+          "link": 6
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 7
+        },
+        {
+          "name": "controlnet_condition",
+          "shape": 7,
+          "type": "ControlNetCondition",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "controlnet_condition",
+          "type": "ControlNetCondition",
+          "slot_index": 0,
+          "links": [
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "x-flux-comfyui",
+        "ver": "00328556efc9472410d903639dc9e68a8471f7ac",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "ApplyFluxControlNet"
+      },
+      "widgets_values": [
+        0.8
+      ]
+    },
+    {
+      "id": 3,
+      "type": "CannyEdgePreprocessor",
+      "pos": [
+        -358.6717529296875,
+        1113.0740966796875
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            7,
+            9
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_controlnet_aux",
+        "ver": "1.0.7",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "CannyEdgePreprocessor"
+      },
+      "widgets_values": [
+        100,
+        200,
+        832
+      ]
+    },
+    {
+      "id": 4,
+      "type": "PreviewImage",
+      "pos": [
+        -28.67193031311035,
+        1193.0740966796875
+      ],
+      "size": [
+        210,
+        246
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 9
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.43",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 5,
+      "type": "CLIPTextEncodeFlux",
+      "pos": [
+        -138.67202758789062,
+        1513.0740966796875
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 10
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.43",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "CLIPTextEncodeFlux"
+      },
+      "widgets_values": [
+        "",
+        "",
+        4
+      ]
+    },
+    {
+      "id": 6,
+      "type": "EmptyLatentImage",
+      "pos": [
+        291.32843017578125,
+        1503.0740966796875
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.43",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        768,
+        768,
+        1
+      ]
+    },
+    {
+      "id": 7,
+      "type": "VAEDecode",
+      "pos": [
+        1201.32861328125,
+        1153.0740966796875
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 11
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 12
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            13
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.43",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 8,
+      "type": "DualCLIPLoader",
+      "pos": [
+        -488.67169189453125,
+        1383.0740966796875
+      ],
+      "size": [
+        315,
+        130
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            10,
+            14
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.43",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "DualCLIPLoader"
+      },
+      "widgets_values": [
+        "sd3m/clip_l.safetensors",
+        "sd3m/t5xxl_fp16.safetensors",
+        "flux",
+        "default"
+      ]
+    },
+    {
+      "id": 9,
+      "type": "UNETLoader",
+      "pos": [
+        -58.67195510864258,
+        1773.0740966796875
+      ],
+      "size": [
+        315,
+        82
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.43",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "flux/flux1-dev.sft",
+        "fp8_e4m3fn"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "VAELoader",
+      "pos": [
+        771.32861328125,
+        1233.0740966796875
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            12
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.43",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "flux/ae.sft"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "LoadFluxControlNet",
+      "pos": [
+        -348.6717834472656,
+        963.0740966796875
+      ],
+      "size": [
+        315,
+        82
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "ControlNet",
+          "type": "FluxControlNet",
+          "slot_index": 0,
+          "links": [
+            6
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "x-flux-comfyui",
+        "ver": "00328556efc9472410d903639dc9e68a8471f7ac",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "LoadFluxControlNet"
+      },
+      "widgets_values": [
+        "flux-dev",
+        "flux-canny-controlnet.safetensors"
+      ]
+    },
+    {
+      "id": 12,
+      "type": "PreviewImage",
+      "pos": [
+        1201.32861328125,
+        1255.0740966796875
+      ],
+      "size": [
+        382.9927978515625,
+        429.280029296875
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 13
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.43",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 13,
+      "type": "LoadImage",
+      "pos": [
+        -708.67138671875,
+        943.0740966796875
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            8
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.43",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "RunComfy_examples_1115_2.jpg",
+        "image"
+      ]
+    },
+    {
+      "id": 14,
+      "type": "CLIPTextEncodeFlux",
+      "pos": [
+        191.32838439941406,
+        1123.0740966796875
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 14
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            2
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.43",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "CLIPTextEncodeFlux"
+      },
+      "widgets_values": [
+        "A dining area showcasing sleek, minimalist furnishings and expansive windows. At the heart of the scene is a lengthy table. The design embraces minimalism with a palette of neutral shades, complemented by light-hued walls and tiles. An open kitchen graces one side, adorned with three hanging lights. Beyond the windows stretches a desert vista. Sunlight pours through the glass doors, illuminating the white flooring.",
+        "A dining area showcasing sleek, minimalist furnishings and expansive windows. At the heart of the scene is a lengthy table. The design embraces minimalism with a palette of neutral shades, complemented by light-hued walls and tiles. An open kitchen graces one side, adorned with three hanging lights. Beyond the windows stretches a desert vista. Sunlight pours through the glass doors, illuminating the white flooring.",
+        4
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      9,
+      0,
+      1,
+      0,
+      "MODEL"
+    ],
+    [
+      2,
+      14,
+      0,
+      1,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      3,
+      5,
+      0,
+      1,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      4,
+      6,
+      0,
+      1,
+      3,
+      "LATENT"
+    ],
+    [
+      5,
+      2,
+      0,
+      1,
+      4,
+      "ControlNetCondition"
+    ],
+    [
+      6,
+      11,
+      0,
+      2,
+      0,
+      "FluxControlNet"
+    ],
+    [
+      7,
+      3,
+      0,
+      2,
+      1,
+      "IMAGE"
+    ],
+    [
+      8,
+      13,
+      0,
+      3,
+      0,
+      "IMAGE"
+    ],
+    [
+      9,
+      3,
+      0,
+      4,
+      0,
+      "IMAGE"
+    ],
+    [
+      10,
+      8,
+      0,
+      5,
+      0,
+      "CLIP"
+    ],
+    [
+      11,
+      1,
+      0,
+      7,
+      0,
+      "LATENT"
+    ],
+    [
+      12,
+      10,
+      0,
+      7,
+      1,
+      "VAE"
+    ],
+    [
+      13,
+      7,
+      0,
+      12,
+      0,
+      "IMAGE"
+    ],
+    [
+      14,
+      8,
+      0,
+      14,
+      0,
+      "CLIP"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ue_links": [],
+    "ds": {
+      "scale": 0.6303940863128502,
+      "offset": [
+        1270.055460332417,
+        -695.2497548695479
+      ]
+    },
+    "frontendVersion": "1.23.4",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
