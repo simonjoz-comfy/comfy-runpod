@@ -1,4 +1,4 @@
-## 🧱 RunPod Comfy Containers
+## 🧱 [RunPod](https://runpod.io?ref=zlo74whj) Comfy Containers
 
 ----
 
