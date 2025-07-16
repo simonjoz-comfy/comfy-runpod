@@ -145,7 +145,7 @@ start_filebrowser() {
     rm -f "$NETWORK_VOLUME/filebrowser.db"
     filebrowser -d "$NETWORK_VOLUME/filebrowser.db" config init
 
-    if [ -n "$FB_USERNAME" ] || [ -n "$FB_PASSWORD" ]; then
+    if [ -z "$FB_USERNAME" ] || [ -z "$FB_PASSWORD" ]; then
         no_auth_flag="--no-auth"
         log_warn "Starting Filebrowser with no authentication."
     else

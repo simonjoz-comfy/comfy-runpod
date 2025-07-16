@@ -16,7 +16,7 @@ VEA="$MODELS_PATH/vae"
 CLIP="$MODELS_PATH/clip"
 DIFFUSION_MODELS="$MODELS_PATH/diffusion_models"
 
-mkdir -p "$CLIP" "$VEA" "$UNET" "$DIFFUSION_MODELS"
+mkdir -p "$CLIP" "$VEA" "$DIFFUSION_MODELS"
 
 # ──────────────────────────────────────────────────────────────────────────────────────────────────────
 # Flux.1 Dev Kontext
