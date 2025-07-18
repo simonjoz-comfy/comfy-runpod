@@ -146,14 +146,14 @@ start_filebrowser() {
     filebrowser -d "$NETWORK_VOLUME/filebrowser.db" config init
 
     if [ -z "$FB_USERNAME" ] || [ -z "$FB_PASSWORD" ]; then
-        no_auth_flag="--no-auth"
+        filebrowser config set --auth.method=noauth
         log_warn "Starting Filebrowser with no authentication."
     else
-        no_auth_flag=""
+        filebrowser config set --minimum-password-length=4
         filebrowser -d "$NETWORK_VOLUME/filebrowser.db" users add "$FB_USERNAME" "$FB_PASSWORD" --perm.admin
     fi
 
-    filebrowser -d "$NETWORK_VOLUME/filebrowser.db" $no_auth_flag \
+    filebrowser -d "$NETWORK_VOLUME/filebrowser.db" \
     --address 0.0.0.0 --port 4040 --root / > "$NETWORK_VOLUME/filebrowser.log" 2>&1 &
 
     log_info "✅ Filebrowser started"
@@ -212,6 +212,7 @@ install_comfyui_custom_nodes() {
     "comfyui-easy-use@1.3.0"
     "efficiency-nodes-comfyui@1.0.7"
     "comfyui-custom-scripts@1.2.5"
+    "comfyui-reactor@0.6.0"
   )
 
   if [ -n "$CUSTOM_NODES_LIST" ]; then
