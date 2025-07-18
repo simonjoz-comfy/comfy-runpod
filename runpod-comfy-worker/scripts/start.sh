@@ -86,7 +86,7 @@ setup_memory_optimization() {
 # Setup SSH
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────
 setup_ssh() {
-    if [ -n "$PUBLIC_KEY" ]; then
+    if [ -n "$PUBLIC_KEY" ] && [ "$PUBLIC_KEY" != "null" ]; then
         log_info "Public key detected. Setting up SSH..."
 
         mkdir -p ~/.ssh
@@ -147,20 +147,23 @@ start_jupyter() {
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────
 start_filebrowser() {
     log_info "Starting Filebrowser..."
-    rm -f "$NETWORK_VOLUME/filebrowser.db"
-    filebrowser -d "$NETWORK_VOLUME/filebrowser.db" config init
+
+    local fb_db_path="$NETWORK_VOLUME/filebrowser.db"
+    local fb_logs_path="$NETWORK_VOLUME/filebrowser.log"
+
+    rm -f "$fb_db_path"
+
+    filebrowser -d "$fb_db_path" config init
 
     if [ -z "$FB_USERNAME" ] || [ -z "$FB_PASSWORD" ]; then
-        filebrowser config set --auth.method=noauth
+        filebrowser -d "$fb_db_path" config set --auth.method=noauth
         log_warn "Starting Filebrowser with no authentication."
     else
-        filebrowser config set --minimum-password-length=4
-        filebrowser -d "$NETWORK_VOLUME/filebrowser.db" users add "$FB_USERNAME" "$FB_PASSWORD" --perm.admin
+        filebrowser -d "$fb_db_path" config set --minimum-password-length=4
+        filebrowser -d "$fb_db_path" users add "$FB_USERNAME" "$FB_PASSWORD" --perm.admin
     fi
 
-    filebrowser -d "$NETWORK_VOLUME/filebrowser.db" \
-    --address 0.0.0.0 --port 4040 --root / > "$NETWORK_VOLUME/filebrowser.log" 2>&1 &
-
+    filebrowser -d "$fb_db_path" --address 0.0.0.0 --port 4040 --root / > "$fb_logs_path" 2>&1 &
     log_info "✅ Filebrowser started"
 }
 
