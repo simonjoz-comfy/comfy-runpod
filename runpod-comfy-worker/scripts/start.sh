@@ -7,14 +7,19 @@
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────
 set -eo pipefail
 
+COMFY_DEFAULT_MODELS_PATH="${COMFYUI_HOME%/}/models"
+COMFY_DEFAULT_OUTPUTS_PATH="${COMFYUI_HOME%/}/outputs"
+
 if [ -z "$NETWORK_VOLUME" ]; then
   NETWORK_VOLUME="/"
-  MODELS_PATH="${COMFYUI_HOME%/}/models"
+  MODELS_PATH="${COMFY_DEFAULT_MODELS_PATH}"
+  OUTPUTS_PATH="${COMFY_DEFAULT_OUTPUTS_PATH}"
 else
   MODELS_PATH="${NETWORK_VOLUME%/}/models"
+  OUTPUTS_PATH="${NETWORK_VOLUME%/}/outputs"
 fi
 
-export NETWORK_VOLUME MODELS_PATH
+export NETWORK_VOLUME MODELS_PATH OUTPUTS_PATH
 
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────
 # Create extra model paths directories
@@ -164,6 +169,23 @@ start_filebrowser() {
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────
 start_comfyui() {
     log_info "Starting ComfyUI..."
+
+    if [ "$OUTPUTS_PATH" != "$COMFY_DEFAULT_OUTPUTS_PATH" ]; then
+
+      mkdir -p "$OUTPUTS_PATH"
+
+      # If not a symlink, or doesn't exist at all, fix it
+      if [ ! -L "$COMFY_DEFAULT_OUTPUTS_PATH" ]; then
+          log_info "Creating outputs symlink..."
+
+          # Remove default Comfy output directory if exists
+          rm -rf "$COMFY_DEFAULT_OUTPUTS_PATH"
+
+          # Create symlink
+          ln -s "$OUTPUTS_PATH" "$COMFY_DEFAULT_OUTPUTS_PATH"
+          log_info "✅ Created symlink: $OUTPUTS_PATH -> $COMFY_DEFAULT_OUTPUTS_PATH"
+      fi
+    fi
 
     comfy launch -- --listen 0.0.0.0 --port 3000 >> /dev/stdout 2>&1 &
 
